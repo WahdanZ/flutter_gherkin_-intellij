@@ -23,7 +23,12 @@ version = properties("pluginVersion")
 repositories {
     mavenCentral()
 }
-
+dependencies {
+    implementation("io.cucumber:cucumber-expressions:7.0.0")
+    implementation("io.cucumber:cucumber-core:2.4.0")
+    implementation("io.cucumber:gherkin:5.1.0")
+    implementation("io.cucumber:cucumber-jvm-deps:1.0.3")
+}
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     pluginName.set(properties("pluginName"))

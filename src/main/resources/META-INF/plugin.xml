@@ -1,18 +1,24 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.wahdanz.fluttergherkinintellij</id>
-    <name>flutter_gherkin_-intellij</name>
+    <name>Flutter_Gherkin_Intellij</name>
     <vendor>wahdanz</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-
+    <depends>gherkin</depends>
+    <depends>Dart</depends>
+    <!--    <depends>com.intellij.modules.platform</depends>-->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.xdebugger</depends>
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.wahdanz.fluttergherkinintellij.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.wahdanz.fluttergherkinintellij.services.MyProjectService"/>
+        <referencesSearch implementation="com.github.wahdanz.fluttergherkinintellij.steps.search.CucumberJavaStepDefinitionSearch"/>
+        <implicitUsageProvider implementation="com.github.wahdanz.fluttergherkinintellij.steps.reference.CucumberJavaImplicitUsageProvider"/>
+        <multiHostInjector implementation="com.github.wahdanz.fluttergherkinintellij.CucumberDartInjector"/>
+        <fileBasedIndex implementation="com.github.wahdanz.fluttergherkinintellij.DartCucumberIndex"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.wahdanz.fluttergherkinintellij.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <extensions defaultExtensionNs="org.jetbrains.plugins.cucumber.steps">
+        <cucumberJvmExtensionPoint implementation="com.github.wahdanz.fluttergherkinintellij.CucumberDartNIExtension"/>
+    </extensions>
+
 </idea-plugin>
