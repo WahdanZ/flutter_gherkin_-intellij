@@ -1,6 +1,6 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps;
+package com.github.wahdanz.fluttergherkinintellij.steps;
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.CucumberDartUtil;
+import com.github.wahdanz.fluttergherkinintellij.CucumberDartUtil;
 import com.intellij.ide.actions.CreateFileAction;
 import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
@@ -25,7 +25,7 @@ import org.jetbrains.plugins.cucumber.psi.GherkinStep;
 import java.util.Arrays;
 import java.util.Properties;
 
-import static com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run.CucumberDartRunConfigurationProducer.isFileInTestDirAndTestPackageExists;
+import static com.github.wahdanz.fluttergherkinintellij.steps.run.CucumberDartRunConfigurationProducer.isFileInTestDirAndTestPackageExists;
 
 abstract public class BaseDartStepDefinitionCreator extends AbstractStepDefinitionCreator {
   private static final String STEP_DEFINITION_SUFFIX = "MyStepdefs";
@@ -42,13 +42,8 @@ abstract public class BaseDartStepDefinitionCreator extends AbstractStepDefiniti
     FileTemplate fileTemplate = FileTemplateManager.getInstance(dir.getProject()).getCodeTemplate(fileTemplateDescriptor.getFileName());
 
     VirtualFile destDir = dir.getVirtualFile();
-    final DartUrlResolver urlResolver = DartUrlResolver.getInstance(dir.getProject(), destDir);
 
-    final VirtualFile oguretsTestLib = urlResolver.findFileByDartUrl("package:ogurets/ogurets.dart");
 
-    if (oguretsTestLib == null) {
-      throw new RuntimeException("Ogurets missing!");
-    }
 
     try {
       CreateFileAction.MkDirs mkdirs = new CreateFileAction.MkDirs(name, dir);
@@ -56,15 +51,15 @@ abstract public class BaseDartStepDefinitionCreator extends AbstractStepDefiniti
       dir = mkdirs.directory;
 
       Properties properties = new Properties();
-      properties.setProperty("CLASS_NAME", name);
-      if (isFileInTestDirAndTestPackageExists(dir.getProject(), destDir,
-        "package:ogurets_flutter/ogurets_flutter.dart", "test_driver")) {
-        properties.put(IMPORTS, "import 'package:ogurets_flutter/ogurets_flutter.dart';");
-        properties.put(CONSTRUCTOR, "  FlutterOgurets _world;\n\n  " + name + "(this._world);\n");
-      } else {
-        properties.put(IMPORTS, "");
-        properties.put(CONSTRUCTOR, "");
-      }
+     // properties.setProperty("CLASS_NAME", name);
+//      if (isFileInTestDirAndTestPackageExists(dir.getProject(), destDir,
+//        "package:ogurets_flutter/ogurets_flutter.dart", "test_driver")) {
+//        properties.put(IMPORTS, "import 'package:ogurets_flutter/ogurets_flutter.dart';");
+//        properties.put(CONSTRUCTOR, "  FlutterOgurets _world;\n\n  " + name + "(this._world);\n");
+//      } else {
+//        properties.put(IMPORTS, "");
+//        properties.put(CONSTRUCTOR, "");
+//      }
 
       PsiFile file = FileTemplateUtil.createFromTemplate(fileTemplate, name, properties, dir).getContainingFile();
       VirtualFile virtualFile = file.getVirtualFile();

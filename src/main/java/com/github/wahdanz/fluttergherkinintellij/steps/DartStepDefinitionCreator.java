@@ -1,6 +1,6 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps;
+package com.github.wahdanz.fluttergherkinintellij.steps;
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.snippets.SnippetGenerator;
+import com.github.wahdanz.fluttergherkinintellij.steps.snippets.SnippetGenerator;
 import com.intellij.codeInsight.CodeInsightUtilCore;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.Editor;
@@ -10,8 +10,6 @@ import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.jetbrains.lang.dart.psi.DartClassDefinition;
 import com.jetbrains.lang.dart.psi.DartFile;
 import cucumber.runtime.snippets.CamelCaseConcatenator;
 import cucumber.runtime.snippets.FunctionNameGenerator;
@@ -30,10 +28,10 @@ public class DartStepDefinitionCreator extends BaseDartStepDefinitionCreator {
   public boolean createStepDefinition(@NotNull GherkinStep step, @NotNull PsiFile file, boolean withTemplate) {
     if (!(file instanceof DartFile)) return false;
 
-    final DartClassDefinition clazz = PsiTreeUtil.getChildOfType(file, DartClassDefinition.class);
-    if (clazz == null) {
-      return false;
-    }
+//    final DartClassDefinition clazz = PsiTreeUtil.getChildOfType(file, DartClassDefinition.class);
+//    if (clazz == null) {
+//      return false;
+//    }
 
     final Project project = file.getProject();
     closeActiveTemplateBuilders(file);
@@ -41,7 +39,7 @@ public class DartStepDefinitionCreator extends BaseDartStepDefinitionCreator {
 
     final PsiElement stepDef = buildStepDefinitionByStep(step, file.getLanguage());
 
-    PsiElement addedStepDef = clazz.getClassBody().getClassMembers().add(stepDef);
+    PsiElement addedStepDef = file.add(stepDef);
 
 //    final PsiMethod constructor = getConstructor(clazz);
 //    final PsiCodeBlock constructorBody = constructor.getBody();
@@ -62,7 +60,7 @@ public class DartStepDefinitionCreator extends BaseDartStepDefinitionCreator {
     Editor editor = FileEditorManager.getInstance(project).getSelectedTextEditor();
     assert editor != null;
 
-    ((Navigatable)clazz.getClassBody().getClassMembers().getLastChild()).navigate(true);
+    ((Navigatable)file.getLastChild()).navigate(true);
     
 //
 //    if (!(addedStepDef instanceof PsiMethodCallExpression)) {

@@ -1,6 +1,6 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart;
+package com.github.wahdanz.fluttergherkinintellij;
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.DartStepDefinitionCreator;
+import com.github.wahdanz.fluttergherkinintellij.steps.DartStepDefinitionCreator;
 import com.intellij.openapi.module.Module;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;

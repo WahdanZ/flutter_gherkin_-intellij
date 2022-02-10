@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart;
+package com.github.wahdanz.fluttergherkinintellij;
 
 import com.intellij.lang.LighterAST;
 import com.intellij.lang.LighterASTNode;

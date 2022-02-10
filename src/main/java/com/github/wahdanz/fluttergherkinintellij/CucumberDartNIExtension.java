@@ -1,8 +1,8 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart;
+package com.github.wahdanz.fluttergherkinintellij;
 
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.DartAnnotatedStepDefinition;
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.DartStepDefinitionCreator;
+import com.github.wahdanz.fluttergherkinintellij.steps.DartAnnotatedStepDefinition;
+import com.github.wahdanz.fluttergherkinintellij.steps.DartStepDefinitionCreator;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.progress.ProgressManager;
@@ -41,7 +41,7 @@ public class CucumberDartNIExtension extends AbstractCucumberExtension {
   @NotNull
   @Override
   public BDDFrameworkType getStepFileType() {
-    return new BDDFrameworkType(DartFileType.INSTANCE, "Dart 2");
+    return new BDDFrameworkType(DartFileType.INSTANCE, "(gherkin)");
   }
 
   @NotNull

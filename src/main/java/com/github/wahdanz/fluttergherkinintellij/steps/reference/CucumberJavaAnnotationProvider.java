@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.reference;
+package com.github.wahdanz.fluttergherkinintellij.steps.reference;
 
 import java.util.Arrays;
 import java.util.HashSet;

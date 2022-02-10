@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps;
+package com.github.wahdanz.fluttergherkinintellij.steps;
 
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;

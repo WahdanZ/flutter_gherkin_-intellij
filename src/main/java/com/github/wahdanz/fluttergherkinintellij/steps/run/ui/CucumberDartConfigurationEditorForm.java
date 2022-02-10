@@ -1,8 +1,8 @@
 // Copyright 2000-2018 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run.ui;
+package com.github.wahdanz.fluttergherkinintellij.steps.run.ui;
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run.CucumberDartRunConfiguration;
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run.CucumberDartRunnerParameters;
+import com.github.wahdanz.fluttergherkinintellij.steps.run.CucumberDartRunConfiguration;
+import com.github.wahdanz.fluttergherkinintellij.steps.run.CucumberDartRunnerParameters;
 import com.intellij.execution.configuration.EnvironmentVariablesComponent;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.options.ConfigurationException;

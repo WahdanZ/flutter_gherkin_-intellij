@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run;
+package com.github.wahdanz.fluttergherkinintellij.steps.run;
 
 // bits taken from https://github.com/flutter/flutter-intellij/blob/master/src/io/flutter/sdk/*.java
 // its an amalgam just to allow us not to have to include Flutter as a dependency if no-one is ever using it

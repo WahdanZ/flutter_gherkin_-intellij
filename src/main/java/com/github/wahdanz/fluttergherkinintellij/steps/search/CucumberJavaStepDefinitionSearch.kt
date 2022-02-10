@@ -22,6 +22,7 @@ import com.jetbrains.lang.dart.psi.DartMethodDeclaration
 import com.github.wahdanz.fluttergherkinintellij.CucumberDartUtil
 import com.intellij.openapi.util.Computable
 import com.intellij.util.Processor
+import com.jetbrains.lang.dart.psi.DartFunctionDeclarationWithBodyOrNative
 import org.jetbrains.plugins.cucumber.CucumberUtil
 
 class CucumberJavaStepDefinitionSearch : QueryExecutor<PsiReference?, ReferencesSearch.SearchParameters> {
@@ -30,9 +31,14 @@ class CucumberJavaStepDefinitionSearch : QueryExecutor<PsiReference?, References
         consumer: Processor<in PsiReference?>
     ): Boolean {
         return ApplicationManager.getApplication().runReadAction(Computable {
+
+            ///val dc = myElement.parent as DartFunctionDeclarationWithBodyOrNative
+            //
+            //dc.functionBody.children[0].children[2].children[0].children[0].children
+
             val myElement = queryParameters.elementToSearch
-            if (myElement.parent is DartMethodDeclaration) {
-                val dc = myElement.parent as DartMethodDeclaration
+            if (myElement.parent is DartFunctionDeclarationWithBodyOrNative) {
+                val dc = myElement.parent as DartFunctionDeclarationWithBodyOrNative
                 val regexp = CucumberDartUtil.findDartAnnotationText(dc)
                 if (regexp != null) {
                     return@Computable CucumberUtil.findGherkinReferencesToElement(

@@ -1,6 +1,6 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps;
+package com.github.wahdanz.fluttergherkinintellij.steps;
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.CucumberDartUtil;
+import com.github.wahdanz.fluttergherkinintellij.CucumberDartUtil;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.psi.PsiElement;

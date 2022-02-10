@@ -1,12 +1,12 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.reference;
+package com.github.wahdanz.fluttergherkinintellij.steps.reference;
 
 import com.intellij.codeInsight.daemon.ImplicitUsageProvider;
 import com.intellij.psi.PsiElement;
 import com.jetbrains.lang.dart.psi.DartClassDefinition;
 import com.jetbrains.lang.dart.psi.DartMethodDeclaration;
 
-import static com.github.wahdanz.fluttergherkinintellij.cucumber.dart.CucumberDartUtil.isStepDefinition;
-import static com.github.wahdanz.fluttergherkinintellij.cucumber.dart.CucumberDartUtil.isStepDefinitionClass;
+import static com.github.wahdanz.fluttergherkinintellij.CucumberDartUtil.isStepDefinition;
+import static com.github.wahdanz.fluttergherkinintellij.CucumberDartUtil.isStepDefinitionClass;
 
 public class CucumberJavaImplicitUsageProvider implements ImplicitUsageProvider {
   @Override

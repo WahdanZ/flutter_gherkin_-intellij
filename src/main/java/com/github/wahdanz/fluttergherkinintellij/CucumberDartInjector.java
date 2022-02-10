@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart;
+package com.github.wahdanz.fluttergherkinintellij;
 
 import com.intellij.lang.Language;
 import com.intellij.lang.injection.MultiHostInjector;

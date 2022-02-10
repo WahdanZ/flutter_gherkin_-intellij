@@ -1,5 +1,5 @@
 // Copyright 2000-2020 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart;
+package com.github.wahdanz.fluttergherkinintellij;
 
 import com.intellij.lang.LighterAST;
 import com.intellij.lang.LighterASTNode;

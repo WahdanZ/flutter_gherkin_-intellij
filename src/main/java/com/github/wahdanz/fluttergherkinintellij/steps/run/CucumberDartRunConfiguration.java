@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run;
+package com.github.wahdanz.fluttergherkinintellij.steps.run;
 
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
@@ -11,7 +11,7 @@ import com.intellij.openapi.project.Project;
 import com.jetbrains.lang.dart.ide.runner.base.DartRunConfigurationBase;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run.ui.CucumberDartConfigurationEditorForm;
+import com.github.wahdanz.fluttergherkinintellij.steps.run.ui.CucumberDartConfigurationEditorForm;
 
 public class CucumberDartRunConfiguration extends DartRunConfigurationBase {
   private CucumberDartRunnerParameters parameters = new CucumberDartRunnerParameters();

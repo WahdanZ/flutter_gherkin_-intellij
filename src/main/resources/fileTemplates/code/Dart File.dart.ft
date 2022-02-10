@@ -1,8 +1,6 @@
 
-import 'package:ogurets/ogurets.dart';
+import 'package:flutter_gherkin/flutter_gherkin.dart';
+import 'package:gherkin/gherkin.dart';
 
 ${IMPORTS}
 
-class ${CLASS_NAME} {
-${CONSTRUCTOR}
-}

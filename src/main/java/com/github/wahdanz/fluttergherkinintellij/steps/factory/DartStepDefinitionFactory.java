@@ -1,10 +1,10 @@
 // Copyright 2000-2018 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.factory;
+package com.github.wahdanz.fluttergherkinintellij.steps.factory;
 
 import com.intellij.openapi.module.Module;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.AbstractDartStepDefinition;
+import com.github.wahdanz.fluttergherkinintellij.steps.AbstractDartStepDefinition;
 
 public abstract class DartStepDefinitionFactory {
   public static DartStepDefinitionFactory getInstance(@NotNull Module module) {

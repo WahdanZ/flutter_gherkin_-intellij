@@ -1,6 +1,6 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps;
+package com.github.wahdanz.fluttergherkinintellij.steps;
 
-import com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.snippets.ParamSnippet;
+import com.github.wahdanz.fluttergherkinintellij.steps.snippets.ParamSnippet;
 import com.google.common.primitives.Primitives;
 
 import java.util.HashSet;
@@ -14,7 +14,11 @@ public class DartSnippet implements ParamSnippet {
 
   @Override
   public String template() {
-    return "@{0}(r\"{1}\")\nvoid {2}({3}) async \'{\'\n    // {4}\n{5}\n\'}\'\n";
+
+    return "StepDefinitionGeneric {0}() '{' \n" +
+            "return {1}<{2}FlutterWidgetTesterWorld>(\"{3}\"\n    ,({4} context)" +
+            " async '{'\n    // {4}\n//{5}\n\t\t'}');\n \t'}";
+
   }
 
   @Override
@@ -30,7 +34,7 @@ public class DartSnippet implements ParamSnippet {
       if (i > 0) {
         result.append(", ");
       }
-      result.append(getArgType(arg)).append(" arg").append(i);
+      result.append(getArgType(arg));
     }
 
     return result.toString();
@@ -59,20 +63,19 @@ public class DartSnippet implements ParamSnippet {
 
     for (int i = 0; i < argumentTypes.size(); i++) {
       ArgumentParam arg = argumentTypes.get(i);
-      if (i > 0) {
-        result.append(", ");
-      }
 
-      result.append(getArgType(arg.clazz)).append(" ");
+      result.append(arg.clazz.getSimpleName()).append(" ");
 
       if (arg.name == null) {
         result.append("arg").append(i);
       } else if (argNames.contains(arg.name)) {
-        result.append(arg.name).append(i);
+        result.append(arg.clazz.getSimpleName()).append(i);
       } else {
-        result.append(arg.name);
-        argNames.add(arg.name);
+        result.append(arg.clazz.getSimpleName());
+        argNames.add(arg.clazz.getSimpleName());
       }
+      result.append(", ");
+
     }
 
     return result.toString();

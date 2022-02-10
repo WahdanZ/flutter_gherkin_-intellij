@@ -17,20 +17,21 @@ import java.util.regex.Pattern
 
 class SnippetGenerator(private val snippet: ParamSnippet) {
     fun getSnippet(step: PickleStep, keyword: String, functionNameGenerator: FunctionNameGenerator?): String {
-        val x =
-            "StepDefinitionGeneric {2}() '{'\n return{0}<{3}FlutterWidgetTesterWorld>('\n {1},({4},context) async async '{'\n \n'}'\n"
-        return MessageFormat.format(
+
+      return  MessageFormat.format(
             snippet.template(),
-            getGerkinKeyWord(keyword, argumentTypes(step).size),
-            snippet.escapePattern(patternFor(step.text)),
             functionName(step.text, functionNameGenerator),
+            getGerkinKeyWord(keyword, argumentTypes(step).size).toLowerCase(),
+            argumentTypes(step).joinToString(separator = "") { it.clazz.simpleName.plus(',')  },
+            snippet.escapePattern(patternFor(step.text)),
             snippet.paramArguments(argumentTypes(step)),
             REGEXP_HINT,
-            if (!step.argument.isEmpty() && step.argument[0] is PickleTable) snippet.tableHint() else ""
+            if (step.argument.isNotEmpty() && step.argument[0] is PickleTable) snippet.tableHint() else ""
         )
+
     }
 
-    fun getGerkinKeyWord(keyword: String, count: Int): String {
+    private fun getGerkinKeyWord(keyword: String, count: Int): String {
         return keyword + if (count > 0) count else ""
     }
 
@@ -118,7 +119,7 @@ class SnippetGenerator(private val snippet: ParamSnippet) {
 
     companion object {
         private val DEFAULT_ARGUMENT_PATTERNS = arrayOf(
-            ArgumentPattern(Pattern.compile("([-+]?\\d+)"), "{int}", Integer.TYPE),
+            ArgumentPattern(Pattern.compile("([-+]?\\d+)"), "{int}",Integer.TYPE),
             ArgumentPattern(
                 Pattern.compile("([+-]?([0-9]*[.])?[0-9]+)"),
                 "{float}",

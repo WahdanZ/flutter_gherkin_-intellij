@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.run;
+package com.github.wahdanz.fluttergherkinintellij.steps.run;
 
 import com.intellij.execution.configurations.RuntimeConfigurationError;
 import com.intellij.openapi.project.Project;

@@ -1,4 +1,4 @@
-package com.github.wahdanz.fluttergherkinintellij.cucumber.dart.steps.snippets;
+package com.github.wahdanz.fluttergherkinintellij.steps.snippets;
 
 
 
